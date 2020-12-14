@@ -1,0 +1,134 @@
+<HTML>
+	<HEAD>
+		<TITLE>Demo</TITLE> 
+		<!--HEADER BEGINS:Insert your own title below and adjust your own styles as necessary------------------>
+		<META http-equiv="content-type" content="text/html; charset=utf-8">
+		<STYLE> TD { FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Arial,Helvetica,Sans-Serif }
+	INPUT { FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Arial,Helvetica,Sans-Serif }
+	SELECT { FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Arial,Helvetica,Sans-Serif }
+	TEXTAREA { FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Arial,Helvetica,Sans-Serif }
+	.clsTimer { BACKGROUND-COLOR: #004e98 }
+	.clsLiving { COLOR: #ffff00; TEXT-ALIGN: right }
+	.txtLabel { FONT-SIZE: 16pt; COLOR: #004e98; TEXT-ALIGN: right }
+	.DemoTitle { FONT-SIZE: 13pt; COLOR: #004e98 }
+	.clsBkclr { BACKGROUND-COLOR: #7f9db9 }
+	</STYLE>
+	
+		<!--HEADER ENDS--------------------------------------------------------------------------------------->
+		<!--SCRIPT BEGINS----------------------------------------------------------------------------------------->
+		<SCRIPT language="javascript">
+       
+	    var nTimer ;
+        window.onload = function()
+       {
+           defBTN_UpLeft.disabled = true;
+           defBTN_Up.disabled = true; 
+           defBTN_UpRight.disabled = true; 
+           defBTN_Left.disabled = true;   
+           defBTN_ZoomIn.disabled = true;  
+           defBTN_ZoomOut.disabled = true; 
+           defBTN_Right.disabled = true; 
+           defBTN_DownLeft.disabled = true;  
+           defBTN_Down.disabled = true;    
+           defBTN_DownRight.disabled = true;
+   
+       }   
+
+	function Play() {
+		window.clearInterval(nTimer);
+
+	       NV1.MediaType = 1 ;                     //NOTE=> Input your MediaType 
+               NV1.CodecType= 3 ;
+               NV1.ID = 1 ;
+	       NV1.SetControlActive(0);
+               NV1.DisplayTitleBar(0);
+
+<!--LOGIN RELATED CHANGES BEGIN------------------------------------------------------------------------------>
+    		NV1.MediaSource = "";	               //NOTE=> Input your Video Server IP
+  		NV1.MulticastIP = "" ;
+		NV1.MediaUserName = "ivo";		          //NOTE=> Input your Video Server User Name
+		NV1.MediaPassword = "123456";                 //NOTE=> Input your Video Server Password        	 
+		NV1.HttpPort = "82";			             //NOTE=> Input your Video Server Http Port
+		NV1.RegisterPort = "82";		            //NOTE=> Input your Video Server Register Port
+		NV1.ControlPort = "82";		           //NOTE=> Input your Video Server Control Port
+		NV1.StreamingPort = "82";		         //NOTE=> Input your Video Server Streaming Port 
+		NV1.MulticastPort = "82";             //NOTE=> Input your Video Server Multicast Port
+		NV1.RTSPPort = "82";                     
+          
+		NV1.Connect(0) ;
+		NV1.Mute=0;										//NOTE=> 1 to mute
+		NV1.Play();
+	     
+
+		if (NV1.ContentStatus>=2) {
+			setInterval("chgTimer()", 1000);        //Start the Count dowm
+		}
+	             
+	}
+	   
+		
+        
+		var bfrEnd = 720 ;
+		var nLivingTime = 0;		                //NOTE=> Select the time of this demo display
+		var nStep = parseInt(bfrEnd/nLivingTime)
+<!--LOGIN RELATED CHANGES END------------------------------------------------------------------------------>
+
+	function chgTimer() {
+		bfrEnd -= nStep ;
+		nLivingTime-- ;
+
+		tmTimer.style.width = bfrEnd ;
+		tmTimer.style.pixelLeft += nStep 
+		txtLiving.innerText = 'Demo ends after ' + nLivingTime + ' sec' ;
+		
+		if (nLivingTime == 0 ) winClose() ;
+	}
+
+	function winClose() {
+		NV1.DisConnect() ;
+		window.opener=null ;
+		window.close() ;
+	}
+
+	
+	nTimer=setInterval("window.Play()",100);
+      
+		</SCRIPT>
+		<!--SCRIPT ENDS-----------------------------------------------------------------------------------------><script id="clientEventHandlersJS" language="javascript">
+<!--
+//-->
+		</script>
+	</HEAD>
+	<BODY bgColor="#ffffff">
+		<TABLE cellSpacing="0" cellPadding="0" width="360" border="0">
+			<TR>
+				<TD height="6"></TD>
+			</TR>
+			<TR>
+				<TD noWrap align="right" height="10">
+					<SPAN class="clsBkclr" id="bkTimer" style="LEFT: 10px; WIDTH: 720px; POSITION: absolute; TOP: 23px"></SPAN>
+					<SPAN class="clsTimer" id="tmTimer" style="Z-INDEX: 1; LEFT: 10px; WIDTH: 720px; POSITION: absolute; TOP: 23px"></SPAN>
+					<SPAN class="clsLiving" id="txtLiving" style="Z-INDEX: 2; LEFT: 10px; WIDTH: 720px; POSITION: absolute; TOP: 23px">
+						<SCRIPT LANGUAGE="JavaScript">document.write("Demo ends after " + nLivingTime + " sec")</SCRIPT>
+					</SPAN>
+				</TD>
+			</TR>
+			<TR>
+				<TD height="6"></TD>
+			</TR>
+			<TR>
+				<TD>  			
+					<OBJECT id="NV1" codeBase="http://actiftp.hosting4less.com/ACTIGENERAL/AP&Manual/Live%20Demo/nvUnifiedControl.ocx"  height="500" width="900" data="data:application/x-oleobject;base64,P2/zpuA6i0WvxKqCVl4L+BAHAABhJAAAzhgAAA=="
+						classid="CLSID:F8E691A0-C92E-4E42-9CDA-62FC07A9483B" VIEWASTEXT>
+					  <embed src="data:application/x-oleobject;base64,P2/zpuA6i0WvxKqCVl4L+BAHAABhJAAAzhgAAA==" width="520" height="280"></embed>
+					</OBJECT>
+					//<PARAM NAME="_Version" VALUE="65536">
+					//<PARAM NAME="_ExtentX" VALUE="19050">
+					//<PARAM NAME="_StockProps" VALUE="0">
+					//<PARAM NAME="EnablePropertyPage" VALUE="0">
+					</OBJECT>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>
