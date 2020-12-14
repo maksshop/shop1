@@ -9,11 +9,11 @@ body {
 }
 #container {
 	height: 700px;
-	width: 950px;
+	width: 963px;
 	margin-top: 0;
-	margin-right: 0;
+	margin-right: auto;
 	margin-bottom: 0;
-	margin-left: 200;
+	margin-left: auto;
 }
 
 #header {
@@ -210,6 +210,8 @@ img {
 	margin-left: 100px;
 }
 #promcont1 {
+	height: 1073px;
+	width: 750px;
 	margin-top: 10px;
 	margin-right: 0px;
 	margin-bottom: 0px;
@@ -222,25 +224,17 @@ img {
 	margin-left: 100px;
 }
 #promcont3 {
+	height: 1073px;
+	width: 750px;
 	margin-top: 10px;
 	margin-right: 0px;
 	margin-bottom: 0px;
 	margin-left: 100px;
 }
 #promcont4 {
+	height: 1073px;
+	width: 750px;
 	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 100px;
-}
-#promcont5 {
-margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 100px;
-}
-#promcont6 {
-margin-top: 10px;
 	margin-right: 0px;
 	margin-bottom: 0px;
 	margin-left: 100px;
