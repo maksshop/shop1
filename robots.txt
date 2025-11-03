@@ -1,0 +1,13 @@
+# robots.txt for Супермаркет Макс
+# https://supermarketmaks.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas (if any exist in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://supermarketmaks.com/sitemap.xml
+
